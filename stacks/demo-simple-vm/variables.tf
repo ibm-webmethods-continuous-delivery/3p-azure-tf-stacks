@@ -19,8 +19,9 @@ variable "vm_name" {
 variable "vm_size" {
   description = "Size of the VM (must support nested virtualization, 4+ cores, 16+ GB RAM)"
   type        = string
-  default     = "Standard_D4s_v3"
-  # Standard_D4s_v3: 4 vCPUs, 16 GB RAM, supports nested virtualization
+  default     = "Standard_D8s_v6"
+  # Standard_D4s_v3: 4 vCPUs, 16 GB RAM, supports nested virtualization (slowish, but cheaper)
+  # Standard_D8s_v6: 8 vCPUs, 32 GB RAM, supports nested virtualization
   # Other options: Standard_D4s_v4, Standard_D4s_v5, Standard_E4s_v3
 }
 
