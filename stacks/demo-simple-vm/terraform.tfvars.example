@@ -1,0 +1,37 @@
+# Example Terraform variables file
+# Copy this file to terraform.tfvars and customize the values
+
+# IMPORTANT: The resource group must already exist in Azure
+# The service principal running this Terraform must have Contributor role in this resource group
+# Resource group and location
+resource_group_name = "rg-demo-simple-vm"  # Must be an existing resource group
+location            = "East US"
+
+# VM configuration
+vm_name        = "demo-win11-vm"
+vm_size        = "Standard_D4s_v3"  # 4 vCPUs, 16 GB RAM, supports nested virtualization
+admin_username = "azureadmin"
+
+# Network configuration
+vnet_address_space     = ["10.0.0.0/16"]
+subnet_address_prefix  = "10.0.1.0/24"
+
+# IMPORTANT: Add your IP addresses and peer IPs here
+# Use CIDR notation (e.g., "203.0.113.45/32" for a single IP)
+# To find your IP: curl ifconfig.me
+allowed_rdp_ips = [
+  # "203.0.113.45/32",  # Your IP
+  # "198.51.100.23/32", # Peer IP 1
+  # "192.0.2.100/32",   # Peer IP 2
+]
+
+# Disk configuration
+os_disk_size_gb = 128
+
+# Tags
+tags = {
+  Environment = "Demo"
+  Purpose     = "Simple VM for WSL2 and Rancher Desktop"
+  ManagedBy   = "Terraform"
+  Owner       = "YourName"
+}

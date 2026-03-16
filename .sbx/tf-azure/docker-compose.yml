@@ -1,0 +1,20 @@
+services:
+  terraform:
+    image: iwcd-terraform-u:alpine
+    container_name: iwcd-sbx-tf-azure
+    hostname: iwcd-sbx-tf-azure
+    read_only: true
+    environment:
+      - ARM_CLIENT_ID
+      - ARM_CLIENT_SECRET
+      - ARM_TENANT_ID
+      - ARM_SUBSCRIPTION_ID
+    volumes:
+      - ../..:/tf
+      - iwcd-tf-home:/home/iwcd-tf/
+      - tmp:/tmp/
+    entrypoint: sleep infinity
+
+volumes:
+  iwcd-tf-home:
+  tmp:
